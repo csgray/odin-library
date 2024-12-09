@@ -1,0 +1,74 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --title-font: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
+    --info-font: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+    --font-size-3: 1.44rem;
+    --font-size-2: 1.2rem;
+    --font-size-1: 1rem;
+    --font-size-0: 0.833rem;
+
+    --book-width: 50px;
+}
+
+body {
+    background-color: skyblue;
+    padding: 2vh;
+}
+
+#library {
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+
+    background-color: rgb(150, 111, 51); /* wood */
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--book-width));
+    align-items: end;
+    row-gap: 20px;
+}
+
+.book {
+    width: var(--book-width);
+    height: auto;
+
+    padding: 2vh 0.5vw 2vh 0.5vw;
+    border: 1px solid black;
+
+    display: grid;
+    gap: 10px;
+    align-content: center;
+
+    .title, .author {
+        font-family: var(--title-font);
+        line-height: 100%;
+        writing-mode: vertical-lr;
+        align-content: center;
+    }
+
+    .title {
+        font-size: var(--font-size-3);
+        font-weight: bolder;
+    }
+    
+    .author {
+        font-size: var(--font-size-1);
+        font-weight: bold;
+    }
+
+    .pages, .read {
+        font-family: var(--info-font);
+        font-size: var(--font-size-0);
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .read {
+        height: calc(var(--font-size-0) * 2);
+    }
+}
