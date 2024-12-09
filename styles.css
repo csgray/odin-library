@@ -7,6 +7,8 @@
 :root {
     --title-font: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
     --info-font: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+    --font-size-5: 2.074rem;
+    --font-size-4: 1.728rem;
     --font-size-3: 1.44rem;
     --font-size-2: 1.2rem;
     --font-size-1: 1rem;
@@ -18,6 +20,62 @@
 body {
     background-color: skyblue;
     padding: 2vh;
+}
+
+#header {
+    padding: 1vh 1vw;
+
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+
+    h1 {
+        font-family: var(--title-font);
+        font-size: var(--font-size-5);
+        font-weight: bolder;
+    }
+
+    form {
+        font-family: var(--info-font);
+        font-size: var(--font-size-1);
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: 
+        "title title author author"
+        "pages read  submit submit";
+        column-gap: 1vw;
+        row-gap: 0.5vh;
+
+        & div {
+            display: flex;
+            gap: 2ch;
+            
+            & input {
+                width: 100%;
+            }
+        }
+
+        & #title {
+            grid-area: title;
+        }
+
+        & #author {
+            grid-area: author;
+        }
+
+        & #pages {
+            grid-area: pages;
+            text-align: right;
+        }
+
+        & #read {
+            grid-area: read;
+        }
+
+        & #submit {
+            grid-area: submit;
+        }
+    }
 }
 
 #library {
