@@ -79,6 +79,22 @@ function displayBook(book) {
     }
     newBook.appendChild(read);
 
+    // Delete
+    index = myLibrary.findIndex((element) => element.title == book.title)
+    newBook.setAttribute("data-index", index);
+
+    const deleteBook = document.createElement("button");
+    deleteBook.classList.add("delete-book");
+    deleteBook.textContent = "delete";
+    deleteBook.addEventListener("click", (event) => {
+        myLibrary.splice(newBook.dataset.index, 1);
+        while (library.firstChild) {
+            library.removeChild(library.firstChild);
+        }
+        displayBooks();
+    })
+    newBook.appendChild(deleteBook);
+
     library.appendChild(newBook);
 }
 
