@@ -55,6 +55,13 @@ body {
             }
         }
 
+        & button, input {
+            font-family: var(--info-font);
+            font-size: var(--font-size-0);
+            border: 1px solid grey;
+            border-radius: 8px;
+        }
+
         & #title {
             grid-area: title;
         }
