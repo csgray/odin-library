@@ -14,7 +14,7 @@
     --font-size-1: 1rem;
     --font-size-0: 0.833rem;
 
-    --book-width: 50px;
+    --book-width: 10ch;
 }
 
 body {
@@ -104,7 +104,6 @@ body {
 
     .title, .author {
         font-family: var(--title-font);
-        line-height: 100%;
         writing-mode: vertical-lr;
         align-content: center;
     }
@@ -119,14 +118,22 @@ body {
         font-weight: bold;
     }
 
-    .pages, .read {
+    .pages, .read, .delete-book {
         font-family: var(--info-font);
         font-size: var(--font-size-0);
         font-weight: bold;
         text-align: center;
     }
 
-    .read {
-        height: calc(var(--font-size-0) * 2);
+    .pages {
+        margin-top: 1rem;
+    }
+
+    button {
+        background-color: transparent;
+        color: white;
+        border: 1px solid white;
+        border-radius: 8px;
+        padding: 4px;
     }
 }

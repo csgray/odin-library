@@ -17,12 +17,8 @@ function Book(title, author, pages = 0, read = false) {
 
 // Set the function on the prototype and not on the constructor
 // so that there is only one copy of the function.
-Book.prototype.info = function () {
-    if (read) {
-        return `${this.title} by ${this.author}, ${this.pages} pages, read`
-    } else {
-        return `${this.title} by ${this.author}, ${this.pages} pages, not read yet`
-    }
+Book.prototype.toggleRead = function () {
+    this.read = !this.read;
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -51,6 +47,10 @@ function displayBook(book) {
     newBook.style.setProperty("background-color", getRandomColor());
     newBook.style.setProperty("color", "white");
 
+    // Used to find the book in the array
+    index = myLibrary.findIndex((element) => element.title == book.title)
+    newBook.setAttribute("data-index", index);
+
     // Title
     const title = document.createElement("div");
     title.classList.add("title");
@@ -70,19 +70,24 @@ function displayBook(book) {
     newBook.appendChild(pages);
 
     // Read
-    const read = document.createElement("div");
+    const read = document.createElement("button");
     read.classList.add("read");
     if (book.read) {
         read.textContent = "read";
     } else {
         read.textContent = "not read";
     }
+    read.addEventListener("click", (event) => {
+        myLibrary[newBook.dataset.index].toggleRead();
+        if (book.read) {
+            read.textContent = "read";
+        } else {
+            read.textContent = "not read";
+        }
+    })
     newBook.appendChild(read);
 
     // Delete
-    index = myLibrary.findIndex((element) => element.title == book.title)
-    newBook.setAttribute("data-index", index);
-
     const deleteBook = document.createElement("button");
     deleteBook.classList.add("delete-book");
     deleteBook.textContent = "delete";
