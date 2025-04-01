@@ -3,22 +3,23 @@ const library = document.getElementById("library");
 const addBook = document.getElementById("add-book");
 const myLibrary = [];
 
-// Constructor function (Legacy)
-function Book(title, author, pages = 0, read = false) {
-    if (!new.target) {
-        throw Error("Must use the new operator to call the function");
+// Book
+class Book {
+    #title;
+    #author;
+    #pages;
+    #read;
+
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = Boolean(read);
     }
 
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = Boolean(read);
-}
-
-// Set the function on the prototype and not on the constructor
-// so that there is only one copy of the function.
-Book.prototype.toggleRead = function () {
-    this.read = !this.read;
+    toggleRead() {
+        this.read = !this.read;
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {

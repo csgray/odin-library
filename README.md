@@ -4,28 +4,23 @@ A small project from the Odin Project's JavaScript course.
 
 ## Note
 
-We could rewrite the Book object using classes:
+This originally used the legacy function model:
 
 ```javascript
-// Class Constructor (after ES6)
-class Book {
-    // Private fields
-    #title;
-    #author;
-    #pages;
-    #read;
-
-    constructor(title, author, pages, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
+function Book(title, author, pages = 0, read = false) {
+    if (!new.target) {
+        throw Error("Must use the new operator to call the function");
     }
 
-    toggleRead() {
-        this.read = !this.read;
-    }
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = Boolean(read);
+}
+
+Book.prototype.toggleRead = function () {
+    this.read = !this.read;
 }
 ```
 
-But this project deliberately uses the old syntax as the course covers classes later.
+But was updated to use a class as part of the intermediate JavaScript course.
